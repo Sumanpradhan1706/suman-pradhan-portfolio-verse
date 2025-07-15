@@ -1,12 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { Suspense } from 'react';
+import { ParticleBackground } from '@/components/three/ParticleBackground';
+import { Navigation } from '@/components/portfolio/Navigation';
+import { Hero } from '@/components/portfolio/Hero';
+import { About } from '@/components/portfolio/About';
+import { Skills } from '@/components/portfolio/Skills';
+import { Projects } from '@/components/portfolio/Projects';
+import { Contact } from '@/components/portfolio/Contact';
+import { Footer } from '@/components/portfolio/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* 3D Background */}
+      <Suspense fallback={null}>
+        <ParticleBackground />
+      </Suspense>
+
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Main Content */}
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
